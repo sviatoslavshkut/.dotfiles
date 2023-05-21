@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>p', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>fm', vim.lsp.buf.format)
 
 --telescope
 local builtin = require('telescope.builtin')
@@ -12,3 +12,8 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
 --undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+--lsp
+vim.keymap.set('n', '<leader>er', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
