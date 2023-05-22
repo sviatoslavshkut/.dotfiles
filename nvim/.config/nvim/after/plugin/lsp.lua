@@ -20,7 +20,7 @@ lsp.configure('lua_ls', {
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
     sighns = true,
     update_in_insert = true,
     underline = false,
