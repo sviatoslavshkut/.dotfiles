@@ -73,7 +73,13 @@ ZSH_COLORIZE_STYLE="one-dark"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages compleat colorize)
+plugins=(
+    git
+    colored-man-pages
+    compleat
+    colorize
+    kubectl
+)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -109,5 +115,3 @@ export SDKMAN_DIR="$HOME/.sdkman"
 source <($HOME/.sdkman/candidates/quarkus/current/bin/quarkus completion)
 
 export PATH=$PATH:/home/sshkut/bin
-
-source '/home/sshkut/lib/azure-cli/az.completion'
