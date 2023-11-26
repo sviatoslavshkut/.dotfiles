@@ -115,3 +115,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 source <($HOME/.sdkman/candidates/quarkus/current/bin/quarkus completion)
 
 export PATH=$PATH:/home/sshkut/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/sshkut/go/bin
