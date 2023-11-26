@@ -1,1 +1,3 @@
-require("sshkut")
+require("init.config")
+require("init.lazy")
+
