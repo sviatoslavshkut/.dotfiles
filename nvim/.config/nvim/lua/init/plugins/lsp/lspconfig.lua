@@ -75,6 +75,13 @@ return {
         lspconfig["rust_analyzer"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                ["rust-analyzer"] = {
+                    checkOnSave = {
+                        command = "clippy"
+                    }
+                }
+            }
         })
         lspconfig["gopls"].setup({
             capabilities = capabilities,
@@ -119,7 +126,7 @@ return {
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            settings = { -- custom settings for lua
+            settings = {
                 Lua = {
                     -- make the language server recognize "vim" global
                     diagnostics = {
