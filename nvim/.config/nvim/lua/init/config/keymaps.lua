@@ -3,8 +3,8 @@ vim.g.mapleader = ' '
 local keymap = vim.keymap
 
 -- delete single character without copying into register
-keymap.set("n", "x", '"_x')
-
+keymap.set("n", "x", '"_x', { desc = "Delete single character without copying into register" })
+keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = "Go to netrw" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
