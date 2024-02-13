@@ -110,6 +110,14 @@ return {
         lspconfig["yamlls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                yaml = {
+                    schemas = {
+                        kubernetes = "*/k8s/*",
+                        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+                    },
+                },
+            },
         })
         lspconfig["bashls"].setup({
             capabilities = capabilities,
