@@ -1,4 +1,4 @@
-TODO automate process
+`stow .` or
 `stow idea`
 `stow nvim`
 `stow pulse`
