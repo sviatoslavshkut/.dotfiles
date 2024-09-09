@@ -79,6 +79,7 @@ plugins=(
     compleat
     colorize
     kubectl
+    asdf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -117,3 +118,4 @@ source <($HOME/.sdkman/candidates/quarkus/current/bin/quarkus completion)
 export PATH=$PATH:/home/sshkut/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/sshkut/go/bin
+export PATH=$PATH:/opt/brother/scanner

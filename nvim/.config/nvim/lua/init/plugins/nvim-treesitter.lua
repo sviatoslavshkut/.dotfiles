@@ -3,7 +3,7 @@ return {
     config = function()
         local treesitter = require("nvim-treesitter.configs")
         treesitter.setup({
-            ensurere_installed = { "rust", "java", "go", "yaml", "lua" },
+            ensurere_installed = { "rust", "java", "go", "yaml", "lua", "cpp" },
             sync_install = false,
             auto_install = true,
             highlight = {
