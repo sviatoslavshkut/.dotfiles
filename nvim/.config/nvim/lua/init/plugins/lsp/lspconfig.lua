@@ -87,6 +87,10 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        lspconfig["zls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
         lspconfig["jsonls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -131,7 +135,7 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
         })
-        lspconfig["clang"].setup({
+        lspconfig["clangd"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
