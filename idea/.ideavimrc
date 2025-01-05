@@ -27,6 +27,8 @@ map Q gq
 set clipboard=unnamed
 set clipboard+=ideaput
 
+set visualbell
+
 set NERDTree
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
