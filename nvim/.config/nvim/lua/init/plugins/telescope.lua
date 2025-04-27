@@ -10,7 +10,14 @@ return {
 
         telescope.setup({
             defaults = {
-                path_display = { "truncate" },
+                path_display = { "smart" },
+                file_ignore_patterns = {
+                    ".git",
+                    ".idea",
+                    ".vscode",
+                    "build",
+                    "target",
+                },
                 mappings = {
                     i = {
                         ["<C-k>"] = actions.move_selection_previous,
@@ -27,10 +34,22 @@ return {
         local keymap = vim.keymap
         local builtin = require("telescope.builtin")
 
-        keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
+        keymap.set("n", "<leader>ff",
+            function()
+                builtin.find_files({ hidden = true })
+            end, { desc = "Fuzzy find files" })
+
+        keymap.set("n", "<leader>fs",
+            function()
+                builtin.live_grep({
+                    additional_args = function()
+                        return { "--hidden" }
+                    end,
+                })
+            end, { desc = "Find string" })
+
         keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
-        keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Find string in cwd" })
-        keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find string under cursor in cwd" })
+        keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find string under cursor" })
         keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Fuzzy search for files tracked by Git" })
         keymap.set("n", "<leader>qf", builtin.quickfix, { desc = "Lists items in the quickfix list" })
     end,

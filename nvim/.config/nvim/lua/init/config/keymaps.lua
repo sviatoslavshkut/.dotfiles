@@ -13,5 +13,6 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" })
 
-keymap.set('', '<leader>y', '"+y', { desc = "Yank to clipboard" }) -- E.g: <leader>yy will yank current line to os clipboard
+keymap.set('', '<leader>y', '"+y', { desc = "yank to clipboard" }) -- e.g: <leader>yy will yank current line to os clipboard
 keymap.set('', '<leader>Y', '"+y$', { desc = "Yank until EOL to clipboard" })
+keymap.set('', '<leader>P', '"+P', { desc = "Paste before cursor from clipboard" })

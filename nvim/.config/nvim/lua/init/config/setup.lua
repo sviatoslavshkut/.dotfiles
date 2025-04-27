@@ -1,5 +1,6 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -7,6 +8,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 vim.opt.wrap = false
 
@@ -27,14 +29,16 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.g.clipboard = {
-    name = 'xclip',
-    copy = {
-        ['+'] = 'xclip -selection clipboard',
-        ['*'] = 'xclip -selection clipboard',
-    },
-    paste = {
-        ['+'] = 'xclip -selection clipboard -o',
-        ['*'] = 'xclip -selection clipboard -o',
-    },
-    cache_enabled = 0,
+	name = "xclip",
+	copy = {
+		["+"] = "xclip -selection clipboard",
+		["*"] = "xclip -selection clipboard",
+	},
+	paste = {
+		["+"] = "xclip -selection clipboard -o",
+		["*"] = "xclip -selection clipboard -o",
+	},
+	cache_enabled = 0,
 }
+
+vim.cmd("let g:netrw_liststyle = 3")
