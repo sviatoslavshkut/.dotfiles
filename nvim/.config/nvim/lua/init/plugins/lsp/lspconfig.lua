@@ -91,6 +91,11 @@ return {
             procMacro = {
               enable = true,
             },
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
           },
         })
       end,
