@@ -44,6 +44,7 @@ return {
         "google-java-format",
         "clang-format",
         "prettier",
+        "codelldb",
       },
     })
   end,
