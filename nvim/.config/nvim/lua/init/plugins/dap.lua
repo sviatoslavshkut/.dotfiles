@@ -29,7 +29,7 @@ return {
       keymap.set("n", "<F6>", dap.step_out)
       keymap.set("n", "<F5>", dap.step_back)
       keymap.set("n", "<F12>", dap.restart)
-      keymap.set("n", "<F11", dap.stop)
+      keymap.set("n", "<F11>", dap.stop)
 
       dap.adapters.lldb = {
         type = "executable",
