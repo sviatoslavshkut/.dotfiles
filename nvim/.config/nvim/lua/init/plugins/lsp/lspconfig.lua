@@ -62,9 +62,6 @@ return {
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
-
     -- Change the Diagnostic symbols in the sign column (gutter)
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
@@ -72,66 +69,61 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
+    local capabilities = cmp_nvim_lsp.default_capabilities()
+
+    for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+      local opts = { capabilities = capabilities }
+
+      lspconfig[server].setup(opts)
+    end
+
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = function(_, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end,
-      ["rust_analyzer"] = function()
-        lspconfig["rust_analyzer"].setup({
-          capabilities = capabilities,
-          on_attach = function(_, bufnr)
-            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-          end,
-          settings = {
-            checkOnSave = {
-              command = "clippy",
-            },
-            procMacro = {
-              enable = true,
-            },
-            cargo = {
-              buildScripts = {
-                enable = true,
-              },
+      settings = {
+        checkOnSave = {
+          command = "clippy",
+        },
+        procMacro = {
+          enable = true,
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+        },
+      },
+    })
+    lspconfig["yamlls"].setup({
+      capabilities = capabilities,
+      settings = {
+        yaml = {
+          schemas = {
+            kubernetes = "*/k8s/*",
+            ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          },
+        },
+      },
+    })
+    lspconfig["lua_ls"].setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            -- make language server aware of runtime files
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
             },
           },
-        })
-      end,
-      ["yamlls"] = function()
-        lspconfig["yamlls"].setup({
-          capabilities = capabilities,
-          settings = {
-            yaml = {
-              schemas = {
-                kubernetes = "*/k8s/*",
-                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-              },
-            },
-          },
-        })
-      end,
-      ["lua_ls"] = function()
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                -- make language server aware of runtime files
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.stdpath("config") .. "/lua"] = true,
-                },
-              },
-            },
-          },
-        })
-      end,
+        },
+      },
     })
   end,
 }
