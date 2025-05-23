@@ -70,6 +70,7 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+      print("Setting up " .. server)
       local opts = { capabilities = capabilities }
 
       if server == "lua_ls" then
@@ -91,9 +92,7 @@ return {
             },
           },
         })
-      end
-
-      if server == "rust_analyzer" then
+      elseif server == "rust_analyzer" then
         lspconfig["rust_analyzer"].setup({
           capabilities = capabilities,
           on_attach = function(_, bufnr)
@@ -113,20 +112,18 @@ return {
             },
           },
         })
-
-        if server == "yamlls" then
-          opts.settings = {
-            yaml = {
-              schemas = {
-                kubernetes = "*/k8s/*",
-                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-              },
+      elseif server == "yamlls" then
+        opts.settings = {
+          yaml = {
+            schemas = {
+              kubernetes = "*/k8s/*",
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
             },
-          }
-        end
+          },
+        }
+      else
+        lspconfig[server].setup(opts)
       end
-
-      lspconfig[server].setup(opts)
     end
   end,
 }
