@@ -121,7 +121,7 @@ return {
             },
           },
         }
-      else
+      elseif server ~= "jdtls" then -- Skip jdtls as it set up in lsp/java.lua
         lspconfig[server].setup(opts)
       end
     end
