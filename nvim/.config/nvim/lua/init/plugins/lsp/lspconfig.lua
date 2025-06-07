@@ -70,7 +70,6 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-      print("Setting up " .. server)
       local opts = { capabilities = capabilities }
 
       if server == "lua_ls" then
