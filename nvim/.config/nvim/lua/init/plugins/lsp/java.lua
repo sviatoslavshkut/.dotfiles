@@ -10,7 +10,7 @@ return {
     local config_os = vim.fn.has("mac") == 1 and "mac" or (vim.fn.has("win32") == 1 and "win" or "linux")
 
     local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-    local workspace_dir = nvim_data_path .. "/jdtals-workspace/" .. project_name
+    local workspace_dir = nvim_data_path .. "/jdtls-workspace/" .. project_name
     vim.fn.mkdir(workspace_dir, "p")
 
     local java_debug_path = nvim_data_path .. "/mason/packages/java-debug-adapter"
