@@ -8,7 +8,7 @@ return {
   config = function()
     local treesitter = require("nvim-treesitter.configs")
     treesitter.setup({
-      ensurere_installed = {
+      ensure_installed = {
         "rust",
         "toml",
         "java",
