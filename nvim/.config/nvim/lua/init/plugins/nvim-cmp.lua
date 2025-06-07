@@ -34,7 +34,7 @@ return {
           border = "rounded",
           scrollbar = true,
           max_width = 80,
-          mmax_height = 40,
+          max_height = 40,
         },
       },
       snippet = {
