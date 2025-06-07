@@ -18,7 +18,7 @@ return {
           },
           { "encoding" },
           { "fileformat" },
-          { "filetipe" },
+          { "filetype" },
         },
       },
     })
