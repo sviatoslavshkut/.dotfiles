@@ -46,6 +46,7 @@ return {
         "clang-format",
         "prettier",
         "codelldb",
+        "cmakelang",
         "java-debug-adapter",
       },
     })

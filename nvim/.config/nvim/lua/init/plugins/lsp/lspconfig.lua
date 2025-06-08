@@ -9,6 +9,14 @@ return {
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local mason_lspconfig = require("mason-lspconfig")
 
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+      pattern = { "*.h.in", "*.c.in", "*.cpp.in", "*.hpp.in", "*.hxx.in", "*.cxx.in" },
+      callback = function()
+        -- Set the filetype to CMake for CMake input files
+        vim.bo.filetype = "cmake"
+      end,
+    })
+
     local keymap = vim.keymap
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
