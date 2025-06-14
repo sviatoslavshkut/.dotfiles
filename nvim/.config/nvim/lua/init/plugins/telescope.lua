@@ -15,7 +15,10 @@ return {
           ".git",
           ".idea",
           ".vscode",
+          ".cache",
           "target",
+          "build",
+          "include",
         },
         mappings = {
           i = {
