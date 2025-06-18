@@ -35,6 +35,7 @@ return {
         "jdtls",
         "clangd",
         "zls",
+        "glsl_analyzer",
       },
       automatic_installation = true,
     })
