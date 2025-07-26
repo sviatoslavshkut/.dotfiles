@@ -16,3 +16,10 @@ keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }
 keymap.set("", "<leader>y", '"+y', { desc = "yank to clipboard" }) -- e.g: <leader>yy will yank current line to os clipboard
 keymap.set("", "<leader>Y", '"+y$', { desc = "Yank until EOL to clipboard" })
 keymap.set("", "<leader>P", '"+P', { desc = "Paste before cursor from clipboard" })
+keymap.set("n", "<leader>cc", function()
+  if vim.g.copilot_enabled == 0 then
+    vim.cmd("Copilot enable")
+  else
+    vim.cmd("Copilot disable")
+  end
+end, { desc = "Toggle Copilot" })
