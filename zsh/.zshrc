@@ -12,6 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="af-magic"
 ZSH_THEME="catppuccin"
 CATPPUCCIN_FLAVOR="mocha"
+CATPPUCCIN_SHOW_TIME=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -110,12 +111,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-source <($HOME/.sdkman/candidates/quarkus/current/bin/quarkus completion)
 
 export PATH=$PATH:/home/sshkut/bin
 export PATH=$PATH:/usr/local/go/bin
