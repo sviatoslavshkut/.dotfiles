@@ -77,60 +77,56 @@ return {
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-      local opts = { capabilities = capabilities }
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
 
-      if server == "lua_ls" then
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                -- make language server aware of runtime files
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.stdpath("config") .. "/lua"] = true,
-                },
-              },
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            -- make language server aware of runtime files
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
             },
           },
-        })
-      elseif server == "rust_analyzer" then
-        lspconfig["rust_analyzer"].setup({
-          capabilities = capabilities,
-          on_attach = function(_, bufnr)
-            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-          end,
-          settings = {
-            checkOnSave = {
-              command = "clippy",
-            },
-            procMacro = {
-              enable = true,
-            },
-            cargo = {
-              buildScripts = {
-                enable = true,
-              },
-            },
+        },
+      },
+    })
+
+    vim.lsp.config("rust_analyzer", {
+      on_attach = function(_, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end,
+      settings = {
+        checkOnSave = {
+          command = "clippy",
+        },
+        procMacro = {
+          enable = true,
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
           },
-        })
-      elseif server == "yamlls" then
-        opts.settings = {
-          yaml = {
-            schemas = {
-              kubernetes = "*/k8s/*",
-              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-            },
+        },
+      },
+    })
+
+    vim.lsp.config("yamlls", {
+      settings = {
+        yaml = {
+          schemas = {
+            kubernetes = "*/k8s/*",
+            ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
           },
-        }
-      elseif server ~= "jdtls" then -- Skip jdtls as it set up in lsp/java.lua
-        lspconfig[server].setup(opts)
-      end
-    end
+        },
+      },
+    })
   end,
 }
