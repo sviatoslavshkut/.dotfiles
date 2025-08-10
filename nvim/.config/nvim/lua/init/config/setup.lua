@@ -35,16 +35,16 @@ if vim.fn.has("macunix") == 1 then
   }
 else
   vim.g.clipboard = {
-    name = "xclip",
+    name = "wl-clipboard",
     copy = {
-      ["+"] = "xclip -selection clipboard",
-      ["*"] = "xclip -selection clipboard",
+      ["+"] = "wl-copy --foreground --type text/plain",
+      ["*"] = "wl-copy --foreground --primary --type text/plain",
     },
     paste = {
-      ["+"] = "xclip -selection clipboard -o",
-      ["*"] = "xclip -selection clipboard -o",
+      ["+"] = "wl-paste --no-newline",
+      ["*"] = "wl-paste --primary --no-newline",
     },
-    cache_enabled = 0,
+    cache_enabled = 1,
   }
 end
 
