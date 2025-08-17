@@ -17,6 +17,11 @@ return {
         lua = { "stylua" },
         cmake = { "cmake_format" },
       },
+      formatters = {
+        cmake_format = {
+          prepend_args = { "--line-width", "240" },
+        },
+      },
       format_on_save = {
         lsp_fallback = true,
         async = false,
