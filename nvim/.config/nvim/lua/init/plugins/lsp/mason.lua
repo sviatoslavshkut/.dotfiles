@@ -23,7 +23,6 @@ return {
     mason_lspconfig.setup({
       ensure_installed = {
         "lua_ls",
-        "gopls",
         "jsonls",
         "cmake",
         "marksman",
@@ -36,6 +35,7 @@ return {
         "clangd",
         "zls",
         "glsl_analyzer",
+        "pylsp",
       },
       automatic_installation = true,
     })
@@ -49,6 +49,8 @@ return {
         "codelldb",
         "cmakelang",
         "java-debug-adapter",
+        "ruff",
+        "isort",
       },
     })
   end,
