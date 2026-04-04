@@ -24,7 +24,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "jsonls",
-        "cmake",
+        "neocmake",
         "marksman",
         "rust_analyzer",
         "taplo",
@@ -47,7 +47,6 @@ return {
         "clang-format",
         "prettier",
         "codelldb",
-        "cmakelang",
         "java-debug-adapter",
         "ruff",
         "isort",
